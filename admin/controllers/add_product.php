@@ -7,6 +7,8 @@ if (isset($_POST['add'])) {
     $product_type = htmlspecialchars($_POST['product_name']);
     $prix = htmlspecialchars($_POST['prix']);
     $description = htmlspecialchars($_POST['description']);
+    $colors=htmlspecialchars($_POST['color']);
+    $sizes=htmlspecialchars($_POST['size']);
     $filename = $_FILES["uploadfile"]["name"];
     $filesize = $_FILES["uploadfile"]["size"];
     $tempname = $_FILES["uploadfile"]["tmp_name"];
@@ -14,7 +16,7 @@ if (isset($_POST['add'])) {
     $allowedExtensions = ['png', 'jpg', 'jpeg'];
     $pattern = '/\.(' . implode('|', $allowedExtensions) . ')$/i';
 
-    if (empty($product_type)   || empty($prix) || empty($description)) {
+    if (empty($product_type)   || empty($prix) || empty($description) || empty($colors) || empty($sizes)) {
         $error = "Veuillez remplir tous les champs";
     } elseif (empty($filename)) {
         $error = "Veuillez choisir une photo pour cette collection"; 
@@ -32,11 +34,13 @@ if (isset($_POST['add'])) {
             $error = "Ce produit existe déjà";
         } else {
             // Insert into collection table
-            $query = $db->prepare('INSERT INTO produits (photo, first_product,description,prix) VALUES (:photo, :first_product,:description,:prix)');
+            $query = $db->prepare('INSERT INTO produits (photo, first_product,description,prix,couleur,size) VALUES (:photo, :first_product,:description,:prix,:couleur,:size)');
             $query->bindParam(':photo', $filename);
             $query->bindParam(':first_product', $product_type);
             $query->bindParam(':description', $description);
             $query->bindParam(':prix', $prix);
+            $query->bindParam(':couleur', $colors);
+            $query->bindParam(':size', $sizes);
             if ($query->execute()) {
                 // Move the uploaded file to the target folder
                 if (move_uploaded_file($tempname, $folder)) {

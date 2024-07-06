@@ -58,7 +58,7 @@
                 foreach($produits as $produit){
                     $product_id= $produit['product_id']
                 ?>
-                     <div class="prod-part-container">
+                     <div  class="prod-part-container">
                         <div class="top-lines">
                             <h1></h1>
                             <h2></h2>
@@ -107,6 +107,8 @@
                                 ?>
                                 <a href="../reviews/product_review.html?product_id=<?=$product_id?>" style="color: black; font-size:0.8rem">Cliquez  pour laisser un avis</a> 
                                 <div class="price">
+                                    <span>Couleurs: <?=$produit['couleur']?></span>
+                                    <span>Sizes: <?=$produit['size']?>$</span>
                                     <span>Prix: <?=$produit['prix']?>$</span>
                                 </div>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, qui? Quo, pariatur eos eligendi consectetur accusamus odio esse autem enim quisquam dicta modi, earum nam! Officiis explicabo error sunt earum ab veniam, expedita inventore.
@@ -121,44 +123,29 @@
                 }
             }
         ?>
-       
-      
         <div class="command">
             <h4>Passez vos commandes</h4>
-            <form action="" data-aos="fade-up" data-aos-duration="3000">
+            <form action="command.php" method='post' data-aos="fade-up" data-aos-duration="3000" class="aos-init aos-animate">
                 <div class="identity">
-                    <input type="text" placeholder="Votre nom">
-                    <input type="email" placeholder="Votre address email">
+                    <input type="text" name='nom' placeholder="Votre nom" value="<?=isset($_POST['nom'])?isset($_POST['nom']):''?>">
+                    <input type="email" name="email" placeholder="Votre address email" value="<?=isset($_POST['email'])?isset($_POST['email']):''?>">
                 </div>
                 <div>
-                    <select name="" id="">
-                        <option value="">Faire le choix</option>
-                        <option value="">Cagoule</option>
-                        <option value="">T-shirt</option>
-                        <option value="">Chaussette</option>
-                        <option value="">Jamper</option>
-                    </select>
-                    <select name="" id="">
-                        <option value="">Votre size</option>
-                        <option value="">xxl</option>
-                        <option value="">xl</option>
-                        <option value="">l</option>
-                        <option value="">m</option>
-                    </select>
-                    <select name="" id="">
-                        <option value="">Choisir la couleur</option>
-                    </select>
-
+                    <input type="text" name="choice" placeholder="Votre choix..,Ex:Cagoule,t-shirt..." value="<?=isset($_POST['choice'])?isset($_POST['choice']):''?>">
+                    <input type="text" name="size" placeholder="Votre size..,Ex:S,M,L,X,XL,2XL..." value="<?=isset($_POST['size'])?isset($_POST['size']):''?>">
+                    <input type="text" name="color" placeholder="Couleurs..,Ex:Blanc,Noir,Bleu" value="<?=isset($_POST['color'])?isset($_POST['color']):''?>">
                 </div>
                 <div>
-                    <input type="number" placeholder="#1, 2, 3, 4, Quantité">
-                    <input type="text" placeholder="Votre addresse">
+                    <input type="text" name="quantite" placeholder="#1, 2, 3, 4, Quantité" value="<?=isset($_POST['quantite'])?isset($_POST['quantite']):''?>">
+                    <input type="text" name="addresse" placeholder="Votre addresse" value="<?=isset($_POST['addresse'])?isset($_POST['addresse']):''?>">
                 </div>
                 <div class="send">
-                    <input class="send-request" type="submit" value="Envoyer la requête">
+                    <input class="send-request" name="send" type="submit" value="Envoyer la requête">
                 </div>
             </form>
         </div>
+    </div>
+
     </div>
 
     <footer class="paddings" data-aos="fade-up" data-aos-duration="3000">

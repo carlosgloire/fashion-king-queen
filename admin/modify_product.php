@@ -2,8 +2,7 @@
     session_start();
     require_once('../functions.php');
     notconnected();
-    require_once('controllers/add_product.php')
-
+    require_once('controllers/modify_product.php');
 ?>
 
 <!DOCTYPE html>
@@ -12,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajouter produit</title>
+    <title>Modifier un produit</title>
 
     <!-- Style css-->
     <link rel="stylesheet" href="../css/header.css">
@@ -31,16 +30,16 @@
 
     <div class="formulaire">
         <div class="formulaire-container">
-            <h3>Ajouter un produit</h3>
+            <h3>Modifier un produit</h3>
             <form action="" method="post" enctype="multipart/form-data">
                 <div>
                     <input type="file" name='uploadfile'>
-                    <input type="text" name="product_name" placeholder="Type de produit">
-                    <input type="number" name="prix" placeholder="Prix">
-                    <textarea name="description" placeholder="Descriptions"></textarea>
-                    <input type="text" name="color" placeholder="Couleurs">
-                    <input type="text" name="size" placeholder="Sizes">
-                    <input class="submit" type="submit" name="add" value="Enregistrer">
+                    <input type="text" name="product_name" value="<?=$product_title?>">
+                    <input type="number" name="prix" value="<?=$product_price?>">
+                    <textarea name="description" ><?=$product_description?></textarea>
+                    <input type="text" name="color" value="<?=$product_color?>">
+                    <input type="text" name="size" value="<?=$product_size?>">
+                    <input class="submit" type="submit" name="modify" value="Enregistrer">
                     <p style="color:red"><?=$error?></p><p style="color: green;"><?=$success?></p>
                 </div>
             </form>

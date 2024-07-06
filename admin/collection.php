@@ -46,7 +46,7 @@
                                 <p><img src="../admin/collection_images/<?=$produit['photo']?>" alt="" style="width:260px;height:260px;object-fit:cover"></p>
                                 <p ><?=$produit['product_type']?></p>
                                 <div style="justify-content: center;">
-                                    <a href="#" class="icons-link"><i class="fa-solid fa-pen"></i></a>
+                                    <a href="modify_collection.php?coll_id=<?=$produit['coll_id']?>" class="icons-link"><i class="fa-solid fa-pen"></i></a>
                                     <a href="#"  class="icons-link delete"  gallery_id="<?= $produit['coll_id'] ?>"><i class="fa-solid fa-trash"></i></a>
                                 </div>
                             </div>

@@ -31,17 +31,15 @@
             <h3>Se connecter</h3>
             <form action="" method='post'>
                 <div>
-                    <input type="email" name='email' placeholder="Nom d'utilisateur">
-                    <input type="password" name='password' placeholder="Votre mot de passe">
+                    <input type="email" name='email' placeholder="Nom d'utilisateur" value="<?=isset($_POST['email']) ?$_POST['email']:'' ?>">
+                    <input type="password" name='password' placeholder="Votre mot de passe" value="<?=isset($_POST['password']) ?$_POST['password']:'' ?>">
                     <input class="submit" type="submit" name='login' value="Connexion">
                     <a href="forgot_password.php">Mot de passe oublié? </a>
                 </div>
             </form>
             <p style="color:red"><?=$error?></p></p>
-
         </div>
     </div>
-
 </body>
 
 </html>

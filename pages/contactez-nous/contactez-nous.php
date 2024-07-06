@@ -11,7 +11,9 @@ if (isset($_POST['send'])) {
         $sender_email = htmlspecialchars($_POST['email']);
         
         if (empty($subject) || empty($message) || empty($sender_email) || empty($noms)) {
-            $error = "Please complete all the fields.";
+            echo '<script>alert("Veillez completer tous les champs");</script>';
+            echo '<script>window.location.href="../../";</script>';
+            exit;
         } else {
             $mail = require __DIR__ . "/mailer.php";
             $mail->setFrom($sender_email, $noms); // Set sender to the email entered in the form
@@ -59,7 +61,7 @@ if (isset($_POST['send'])) {
                 echo '<script>window.location.href="../../";</script>';
                 exit;
             } catch (Exception $e) {
-                echo "<script>alert('Le message n'a été envoyé avec succès, vous serez répondu via votre mail');</script>";
+                echo "<script>alert('Le message n'a été envoyé ');</script>";
                 echo '<script>window.location.href="../../";</script>';
                 exit;
             }

@@ -43,10 +43,12 @@
                             <div class="prod-admin-item">
                                 <p><img src="../admin/product_images/<?=$produit['photo']?>" alt="" style="width:265px;height: 265px; object-fit:cover"></p>
                                 <span><?=$produit['first_product']?></span>
-                                <h5><?=$produit['prix']?>$</h5>
-                                <p style="width: 265px;"><?=$produit['description']?></p>
+                                <h5 style="font-weight: bold;"><?=$produit['prix']?>$</h5>
+                                <h5 style="font-weight: bold;"><?=$produit['couleur']?></h5>
+                                <h5 style="font-weight: bold;"><?=$produit['size']?></h5>
+                                <p style="width: 265px;margin-top:20px"><?=$produit['description']?></p>
                                 <div style="justify-content: center;">
-                                    <a href="#" class="icons-link"><i class="fa-solid fa-pen"></i></a>
+                                    <a href="modify_product.php?product_id=<?=$produit['product_id']?>" class="icons-link"><i class="fa-solid fa-pen"></i></a>
                                     <a href="#"  class="icons-link delete"  gallery_id="<?= $produit['product_id'] ?>"><i class="fa-solid fa-trash"></i></a>
                                     <a href="petites_images.php?product_id=<?=$produit['product_id']?>" class="icons-link">Petites images</a>
                                 </div>

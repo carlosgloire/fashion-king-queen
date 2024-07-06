@@ -181,6 +181,10 @@ form .send {
     background-color: #000000d0;
 }
 
+.command form .choice .first_choice {
+    display: flex;
+    width: 100%;
+}
 
 /* MEDIA QUERY */
 

@@ -267,10 +267,11 @@ span {
 }
 
 .product-item {
-    display: flex;
     gap: 10px;
-    justify-content: center;
     -webkit-column-gap: 10px;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
 
 }
 
@@ -384,10 +385,9 @@ button{
 /*** COLLECTION ***/
 
 .collection-container {
-    display: grid;
+
     gap: 10px;
     -webkit-column-gap: 10px;
-    grid-template-columns: auto auto auto auto;
     justify-content: center;
     display: flex;
     flex-wrap: wrap;
