@@ -138,6 +138,8 @@
                 <div>
                     <input type="text" name="quantite" placeholder="#1, 2, 3, 4, Quantité" value="<?=isset($_POST['quantite'])?isset($_POST['quantite']):''?>">
                     <input type="text" name="addresse" placeholder="Votre addresse" value="<?=isset($_POST['addresse'])?isset($_POST['addresse']):''?>">
+                    <input type="text" name="phone" placeholder="Votre numéro de télephone" value="<?=isset($_POST['addresse'])?isset($_POST['addresse']):''?>">
+
                 </div>
                 <div class="send">
                     <input class="send-request" name="send" type="submit" value="Envoyer la requête">

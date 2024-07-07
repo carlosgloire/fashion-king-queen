@@ -14,8 +14,13 @@ if (isset($_POST['send'])) {
         $color = htmlspecialchars($_POST['color']);
         $quantite= htmlspecialchars($_POST['quantite']);
         $addresse = htmlspecialchars($_POST['addresse']);
-        if (empty($noms) || empty($sender_email) || empty($choice) || empty($size) || empty($color) || empty($quantite) || empty($addresse)) {
+        $phone = htmlspecialchars($_POST['phone']);
+        if (empty($noms) || empty($sender_email) || empty($choice) || empty($size) || empty($color) || empty($quantite) || empty($addresse) || empty($phone)) {
             echo '<script>alert("Veuillez compléter tous les champs");</script>';
+            echo '<script>window.location.href="produit.php";</script>';
+            exit;
+        } elseif (!preg_match("#^[+]+[0-9]{12}$#", $_POST['phone'])) {
+            echo '<script>alert("Veillez ecrire le numero avec indicatif Ex:+243900000000.");</script>';
             echo '<script>window.location.href="produit.php";</script>';
             exit;
         } else {
@@ -34,14 +39,15 @@ if (isset($_POST['send'])) {
                 echo '<script>window.location.href="produit.php";</script>';
                 exit;
             } else {
-                $query = $db->prepare('INSERT INTO commands (nom,email,choix,size,couleur,quantite,addresse) VALUES (:nom,:email,:choix,:size,:couleur,:quantite,:addresse)');
+                $query = $db->prepare('INSERT INTO commands (nom,email,choix,size,couleur,quantite,addresse,phone) VALUES (:nom,:email,:choix,:size,:couleur,:quantite,:addresse,:phone)');
                 $query->bindParam(':nom', $noms);
                 $query->bindParam(':email', $sender_email);
                 $query->bindParam(':choix', $choice);
                 $query->bindParam(':size', $size);
                 $query->bindParam(':couleur', $color);
                 $query->bindParam(':quantite', $quantite);
-                $query->bindParam(':addresse', $addresse); // Corrected line
+                $query->bindParam(':addresse', $addresse);
+                $query->bindParam(':phone', $phone); 
                 $query->execute();
                 $mail = require __DIR__ . "/contactez-nous/mailer.php";
                 $mail->setFrom($sender_email, 'FASHION STYLE/COMMANDES'); // Set sender to the email entered in the form

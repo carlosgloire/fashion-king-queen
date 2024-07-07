@@ -4,6 +4,8 @@
     notconnected();
     logout();
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,8 +31,14 @@
 
     <!-- Dasboard content -->
     <section>
-        <form action="" method="post"><button title="Se deconnecter" name="logout" style="position: absolute;top:0;font-size:1.2rem;margin-top:30px;cursor:pointer" href="#" class="icons-link" ><i class="fa-solid fa-right-from-bracket" ></i></button></form>
+        <form action="" method="post"><button title="Se deconnecter" name="logout" style="position: absolute;top:0;font-size:1.2rem;cursor:pointer;background-color:initial;color:black;" href="#" class="icons-link" ><i class="fa-solid fa-right-from-bracket" ></i></button></form>
         <div class="dashboard-content">
+            <div>
+                <a class="dashboard-item" href="home.php">
+                    <i class="bx bx-home-alt"></i>
+                    <span>Accueil</span>
+                </a>
+            </div>
             <div>
                 <a class="dashboard-item" href="produit.php">
                     <i class='bx bx-pie-chart-alt-2'></i>

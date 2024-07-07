@@ -46,7 +46,7 @@
                                 <h5 style="font-weight: bold;"><?=$testimonial['role']?></h5>
                                 <p><?=$testimonial['message']?></p>
                                 <div style="justify-content: center;">
-                                    <a href="#" class="icons-link"><i class="fa-solid fa-pen"></i></a>
+                                    <a href="modifier_temoignage.php?id=<?=$testimonial['id']?>" class="icons-link"><i class="fa-solid fa-pen"></i></a>
                                     <a href="#"  class="icons-link delete"  gallery_id="<?= $testimonial['id'] ?>"><i class="fa-solid fa-trash"></i></a>
                                 </div>
                             </div>

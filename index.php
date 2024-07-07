@@ -298,7 +298,7 @@ require_once('database/db.php');
         <div id="collection" class="collection paddings">
             <div class="choose-us-title">
                 <h5></h5>
-                <h3>Collection</h3>
+                <h3>Nos collections</h3>
                 <h5></h5>
             </div>
 

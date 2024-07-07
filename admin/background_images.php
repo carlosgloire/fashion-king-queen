@@ -44,8 +44,7 @@
                                 <p><img src="../admin/background_images/<?=$produit['photo']?>" alt="" style="width:260px;height:260px;object-fit:cover"></p>
 
                                 <div style="justify-content: center;">
-                                    <a href="#" class="icons-link"><i class="fa-solid fa-pen"></i></a>
-                                    <a href="#" class="icons-link delete"  gallery_id="<?= $produit['image_id'] ?>"><i class="fa-solid fa-trash"></i></a>
+                                    <a href="#" class="icons-link delete"  gallery_id="<?= $produit['image_id'] ?>">Supprimer</a>
                                 </div>
                             </div>
                         <?php
