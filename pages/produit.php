@@ -1,4 +1,7 @@
-<?php require_once('../database/db.php')?>
+<?php
+session_start(); // Assurez-vous que la session est démarrée
+require_once('../database/db.php');
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -45,6 +48,19 @@
             <h3>Nos produits</h3>
             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi, numquam voluptatum. Natus temporibus voluptatum sapiente voluptates recusandae quod.</p>
         </div>
+    </div>
+    
+    <div style="float: right; margin-right: 50px;">
+        <?php
+        $total_quantity = 0;
+        if (isset($_SESSION['panier'])) {
+            foreach ($_SESSION['panier'] as $item) {
+                $total_quantity += $item['quantity'];
+            }
+        }
+        ?>
+        <p style="padding: 3px; border-radius: 45%; color: red; font-weight:bold;margin-left:7px;margin-bottom:-5px"><?= $total_quantity ?></p>
+        <a href="panier.php"><i class="fa-solid fa-cart-shopping" style="font-size: 1.5rem;"></i></a>
     </div>
 
     <div class="prod-part paddings">
@@ -108,12 +124,16 @@
                                 <a href="../reviews/product_review.html?product_id=<?=$product_id?>" style="color: black; font-size:0.8rem">Cliquez  pour laisser un avis</a> 
                                 <div class="price">
                                     <span>Couleurs: <?=$produit['couleur']?></span>
-                                    <span>Sizes: <?=$produit['size']?>$</span>
-                                    <span>Prix: <?=$produit['prix']?>$</span>
+                                    <span>Sizes: <?=$produit['size']?></span>
+                                    <span>Prix: <?=$produit['prix']?></span>
                                 </div>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, qui? Quo, pariatur eos eligendi consectetur accusamus odio esse autem enim quisquam dicta modi, earum nam! Officiis explicabo error sunt earum ab veniam, expedita inventore.
                                     Fugit amet pariatur nulla. Voluptatum, deleniti!</p>
                                 <span>Nous faisons la livraison de nos produits à domicile</span>
+				                <form action="ajouter_panier.php" method="post">
+                                    <input type="hidden" name="product_id" value="<?=$product_id?>">
+                                    <input type="submit" name="ajouter_panier" value="Ajouter au panier">
+                                </form>
                             </div>
 
                         </div>
@@ -139,15 +159,12 @@
                     <input type="text" name="quantite" placeholder="#1, 2, 3, 4, Quantité" value="<?=isset($_POST['quantite'])?isset($_POST['quantite']):''?>">
                     <input type="text" name="addresse" placeholder="Votre addresse" value="<?=isset($_POST['addresse'])?isset($_POST['addresse']):''?>">
                     <input type="text" name="phone" placeholder="Votre numéro de télephone" value="<?=isset($_POST['addresse'])?isset($_POST['addresse']):''?>">
-
                 </div>
                 <div class="send">
                     <input class="send-request" name="send" type="submit" value="Envoyer la requête">
                 </div>
             </form>
         </div>
-    </div>
-
     </div>
 
     <footer class="paddings" data-aos="fade-up" data-aos-duration="3000">
